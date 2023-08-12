@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import handleDispatches from '../../helpers/dispatchFilters'
 import { useDispatch } from 'react-redux'
+import style from './FilterByActivity.module.css'
 
 const FilterByActivity = () => {
   const { activities } = useSelector((state) => state)

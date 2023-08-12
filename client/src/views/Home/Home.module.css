@@ -1,0 +1,16 @@
+.title {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.resetButton {
+  text-align: center;
+  margin-top: 1rem;
+  width: 100px;
+  height: 40px;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}

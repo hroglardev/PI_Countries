@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import handleDispatches from '../../helpers/dispatchFilters'
+import style from './FilterByContinent.module.css'
 
 const FilterByContinent = () => {
   const dispatch = useDispatch()

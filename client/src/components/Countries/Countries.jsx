@@ -3,6 +3,7 @@ import Country from '../Country/Country'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import handleFilters from '../../helpers/filters'
+import style from './Countries.module.css'
 
 const Countries = () => {
   const { order, population, continent, activity, allCountries } = useSelector(
@@ -30,31 +31,36 @@ const Countries = () => {
   }, [order, population, continent, activity, allCountries])
   return (
     <div>
-      <h2>Countries of the World</h2>
-      {countriesToDisplay.map((country) => {
-        return (
-          <Country
-            key={country.id}
-            id={country.id}
-            flag={country.flag}
-            name={country.name}
-            continent={country.continent}
-          />
-        )
-      })}
-      <button
-        disabled={currentPage === 0}
-        onClick={() => setCurrentPage(currentPage - 1)}
-      >
-        Previous
-      </button>
-      <p>{currentPage + 1}</p>
-      <button
-        disabled={currentPage === totalPages - 1}
-        onClick={() => setCurrentPage(currentPage + 1)}
-      >
-        Next{' '}
-      </button>
+      <div className={style.countriesWrapper}>
+        {countriesToDisplay.map((country) => {
+          return (
+            <Country
+              key={country.id}
+              id={country.id}
+              flag={country.flag}
+              name={country.name}
+              continent={country.continent}
+            />
+          )
+        })}
+      </div>
+      <div className={style.paginationButtons}>
+        <button
+          disabled={currentPage === 0}
+          onClick={() => setCurrentPage(currentPage - 1)}
+          className={style.button}
+        >
+          Previous
+        </button>
+        <p className={style.currentPage}>{currentPage + 1}</p>
+        <button
+          disabled={currentPage === totalPages - 1}
+          onClick={() => setCurrentPage(currentPage + 1)}
+          className={style.button}
+        >
+          Next
+        </button>
+      </div>
     </div>
   )
 }

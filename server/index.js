@@ -30,7 +30,7 @@ conn
         })
         await Country.bulkCreate(countryDB)
       }
-      console.log(`Server running on HOLA ${PORT}`)
+      console.log(`Server running on Port: ${PORT}`)
     })
   })
   .catch((error) => console.error(error))

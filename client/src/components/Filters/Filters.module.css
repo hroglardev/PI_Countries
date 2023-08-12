@@ -1,0 +1,40 @@
+/* Filters.module.css */
+
+.filtersWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+
+.filterWrapper {
+  flex: 1 1 calc(50% - 1rem);
+  margin: 0.5rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filterLabel {
+  font-weight: bold;
+}
+
+.selectInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+@media (min-width: 768px) {
+  /* Adjust the width for larger screens */
+  .filterWrapper {
+    max-width: 20%;
+  }
+}
