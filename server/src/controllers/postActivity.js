@@ -8,18 +8,25 @@ const postActivity = async (req, res) => {
         error: 'Please fill all the inputs and add countries to the activity',
       })
     }
+    const activityFound = await Activity.findOne({
+      where: {
+        name: name,
+      },
+    })
+    if (activityFound)
+      return res.status(404).json({ error: 'Activity already exists' })
 
-    const creado = await Activity.create({
+    const created = await Activity.create({
       name,
       difficulty,
       duration,
       season,
     })
 
-    await creado.addCountries(countryName)
+    await created.addCountries(countryName)
 
     const activityCreated = await Activity.findOne({
-      where: { id: creado.id },
+      where: { id: created.id },
       include: {
         model: Country,
       },
