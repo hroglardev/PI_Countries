@@ -4,12 +4,11 @@ const postActivity = async (req, res) => {
   try {
     const { name, difficulty, duration, season, countryName } = req.body
     if (!name || !difficulty || !duration || !season || !countryName) {
-      return res
-        .status(404)
-        .json({
-          error: 'Please fill all the inputs and add countries to the activity',
-        })
+      return res.status(404).json({
+        error: 'Please fill all the inputs and add countries to the activity',
+      })
     }
+
     const creado = await Activity.create({
       name,
       difficulty,

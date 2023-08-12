@@ -1,19 +1,13 @@
-import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { getCountries } from '../../redux/actions'
-import { useDispatch } from 'react-redux'
+import style from './Landing.module.css'
 
 const Landing = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getCountries())
-  }, [])
   return (
-    <div>
-      <h1>Travel Buddy</h1>
-      <p>Choose your next destination</p>
-      <NavLink to='/home'>
-        <button>Let's go</button>
+    <div className={style.container}>
+      <h1 className={style.title}>Travel Buddy</h1>
+      <p className={style.subtitle}>Choose your next destination</p>
+      <NavLink to='/home' className={style.link}>
+        <button className={style.button}>Let's go</button>
       </NavLink>
     </div>
   )

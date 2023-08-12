@@ -1,1 +1,5 @@
-
+body {
+  background: url('https://youthincmag.com/wp-content/uploads/2018/09/Travel-And-Tourism-Sector.jpg')
+    no-repeat center center fixed;
+  background-size: cover;
+}

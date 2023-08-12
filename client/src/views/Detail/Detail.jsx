@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import style from './Detail.module.css'
 
 const Detail = () => {
   const { id } = useParams()
@@ -22,18 +23,24 @@ const Detail = () => {
     console.log(country)
   }, [id])
   return (
-    <div>
-      {error && <p>{error}</p>}
+    <div className={style.detailWrapper}>
+      {error && <p className={style.error}>{error}</p>}
       {!error && (
         <div>
           <img src={country.flag} alt={country.name} />
-          <h2>Country: {`${country.name} (${country.id})`}</h2>
+          <h2 className={style.detailData}>
+            Country: {`${country.name} (${country.id})`}
+          </h2>
 
-          <h3>Continent: {country.continent}</h3>
-          <h3>Capital: {country.capital}</h3>
-          {country.subregion && <h3>Subregion: {country.subregion}</h3>}
-          {country.area && <h3>Area: {`${country.area} m2`}</h3>}
-          <h3>Population: {country.population}</h3>
+          <h3 className={style.detailData}>Continent: {country.continent}</h3>
+          <h3 className={style.detailData}>Capital: {country.capital}</h3>
+          {country.subregion && (
+            <h3 className={style.detailData}>Subregion: {country.subregion}</h3>
+          )}
+          {country.area && (
+            <h3 className={style.detailData}>Area: {`${country.area} m2`}</h3>
+          )}
+          <h3 className={style.detailData}>Population: {country.population}</h3>
         </div>
       )}
     </div>

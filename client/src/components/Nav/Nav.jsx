@@ -9,7 +9,6 @@ const Nav = () => {
   const showSearchOnDetail = location.pathname.startsWith('/detail')
   return (
     <div className={style.wrapper}>
-      {showSearchBar && !showSearchOnDetail && <SearchBar />}
       <div className={style.linkWrapper}>
         <NavLink to='/home' className={style.navLink}>
           Home
@@ -18,6 +17,7 @@ const Nav = () => {
           Create Activity
         </NavLink>
       </div>
+      {showSearchBar && !showSearchOnDetail && <SearchBar />}
     </div>
   )
 }
