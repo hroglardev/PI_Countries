@@ -1,4 +1,5 @@
 const { Activity, Country } = require('../db')
+const { Op } = require('sequelize')
 
 const postActivity = async (req, res) => {
   try {
@@ -10,7 +11,9 @@ const postActivity = async (req, res) => {
     }
     const activityFound = await Activity.findOne({
       where: {
-        name: name,
+        name: {
+          [Op.iLike]: name,
+        },
       },
     })
     if (activityFound)
@@ -37,7 +40,7 @@ const postActivity = async (req, res) => {
   } catch (error) {
     return res
       .status(500)
-      .send({ error: 'There was a problem creating the country' })
+      .send({ error: 'There was a problem creating the Activity' })
   }
 }
 
