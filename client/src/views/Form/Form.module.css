@@ -14,7 +14,8 @@
 }
 .formWrapper {
   text-align: center;
-  margin-top: 150px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .subtitle {
