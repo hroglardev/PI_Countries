@@ -4,10 +4,10 @@ const PORT = 3001
 const axios = require('axios')
 
 conn
-  .sync({ force: true })
+  .sync({ alter: true })
   .then(() => {
     server.listen(PORT, async () => {
-      const allCountries = Country.findAll() //
+      const allCountries = await Country.findAll() //
       if (!allCountries.length) {
         const { data } = await axios('http://localhost:5000/countries')
         const countryDB = data.map((country) => {
@@ -33,4 +33,4 @@ conn
       console.log(`Server running on Port: ${PORT}`)
     })
   })
-  .catch((error) => console.error(error))
+  .catch((error) => console.error(error.message))
