@@ -6,7 +6,7 @@ const validate = (activityData) => {
     errors.name = 'Must only have letters and spaces'
   } else if (!activityData.difficulty) {
     errors.difficulty = 'Must have difficulty'
-  } else if (!/^(?:[1-5])$/.test(activityData.difficulty)) {
+  } else if (!/^[1-5]$/.test(activityData.difficulty)) {
     errors.difficulty = 'Difficulty must be between 1 and 5'
   } else if (!activityData.duration) {
     errors.duration = 'Must have duration'

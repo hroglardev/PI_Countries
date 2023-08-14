@@ -1,3 +1,7 @@
+.container {
+  margin-top: 65px;
+  margin-bottom: 65px;
+}
 .countriesWrapper {
   display: flex;
   flex-wrap: wrap;

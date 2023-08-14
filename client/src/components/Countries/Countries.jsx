@@ -30,7 +30,7 @@ const Countries = () => {
     setCurrentPage(0)
   }, [order, population, continent, activity, allCountries])
   return (
-    <div>
+    <div className={style.container}>
       <div className={style.countriesWrapper}>
         {countriesToDisplay.map((country) => {
           return (
