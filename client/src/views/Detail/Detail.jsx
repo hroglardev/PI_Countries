@@ -41,6 +41,21 @@ const Detail = () => {
             <h3 className={style.detailData}>Area: {`${country.area} m2`}</h3>
           )}
           <h3 className={style.detailData}>Population: {country.population}</h3>
+          {country.Activities && country.Activities.length > 0 && (
+            <ul className={style.activitiesList}>
+              <h3 className={style.detailData}>Activities: </h3>
+              {country.Activities.map((activity) => {
+                return (
+                  <li className={style.activityItem} key={activity.id}>
+                    <span className={style.activityName}>{activity.name}</span>
+                    <span className={style.activityDuration}>
+                      Duration: {activity.duration} hours
+                    </span>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </div>
       )}
     </div>

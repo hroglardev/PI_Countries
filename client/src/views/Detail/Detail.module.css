@@ -20,3 +20,26 @@
 .detailData {
   margin-top: 1rem;
 }
+
+.activitiesList {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.activityItem {
+  margin: 0.5rem 0;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.activityName {
+  font-weight: bold;
+}
+
+.activityDuration {
+  color: #777;
+}
