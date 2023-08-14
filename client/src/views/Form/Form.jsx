@@ -133,6 +133,7 @@ const Form = () => {
             </button>
           )
         })}
+        {!countriesOptions.length && <p>Must input at least one country</p>}
         <button type='submit' disabled={Object.keys(errors).length > 0}>
           Create Activity
         </button>

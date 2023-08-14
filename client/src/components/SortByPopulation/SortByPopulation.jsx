@@ -1,6 +1,5 @@
 import handleDispatches from '../../helpers/dispatchFilters'
 import { useDispatch, useSelector } from 'react-redux'
-import style from './SortByPopulation.module.css'
 
 const SortByPopulation = () => {
   const dispatch = useDispatch()
