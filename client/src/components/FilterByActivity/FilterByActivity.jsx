@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 const FilterByActivity = () => {
   const { activities } = useSelector((state) => state)
   const dispatch = useDispatch()
+
   return (
     <div>
       <select

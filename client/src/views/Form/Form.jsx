@@ -9,7 +9,6 @@ const Form = () => {
   const dispatch = useDispatch()
   const countries = useSelector((state) => state.allCountries)
   const [errors, setErrors] = useState({})
-  const [countriesOptions, setCountriesOptions] = useState([])
   const [activityData, setActivityData] = useState({
     name: '',
     difficulty: '',
@@ -20,36 +19,29 @@ const Form = () => {
 
   useEffect(() => {
     dispatch(getCountries())
-    setActivityData((prevActivityData) => ({
-      ...prevActivityData,
-      countryName: [...countriesOptions],
-    }))
-  }, [countriesOptions])
+  }, [])
 
   //INPUT HANDLER
   const handleInputChange = (event) => {
     const { name, value } = event.target
-
-    setActivityData((prevActivityData) => ({
-      ...prevActivityData,
-      [name]: value,
-    }))
-
     if (name === 'country') {
-      handleAddCountries(value)
+      setActivityData({
+        ...activityData,
+        countryName: [...activityData.countryName, value],
+      })
+    } else {
+      setActivityData({ ...activityData, [name]: value })
+      setErrors(validate({ ...activityData, [name]: value }))
     }
+  }
 
-    setErrors(validate({ ...activityData, [name]: value }))
-  }
-  // ADD COUNTRIES TO THE ARRAY
-  const handleAddCountries = (countryName) => {
-    setCountriesOptions([...countriesOptions, countryName])
-  }
-  // DELETE COUNTRIES IN ARRAY
-  const handleDeleteCountry = (countryName) => {
-    setCountriesOptions((prevOptions) =>
-      prevOptions.filter((countryId) => countryId !== countryName)
-    )
+  const handleDeleteCountry = (event, countryName) => {
+    setActivityData({
+      ...activityData,
+      countryName: activityData.countryName.filter(
+        (country) => country !== countryName
+      ),
+    })
   }
   // HANDLE SUBMIT OF FORM
   const handleSubmit = async (event, activityData) => {
@@ -64,7 +56,6 @@ const Form = () => {
         season: '',
         countryName: [],
       })
-      setCountriesOptions([])
       alert(response.data.message)
     } catch (error) {
       alert(error.response.data.error)
@@ -134,19 +125,28 @@ const Form = () => {
             })}
         </select>
         <div className={style.buttonContainer}>
-          {countriesOptions?.map((countryName) => {
+          {activityData.countryName?.map((countryName) => {
             return (
               <button
+                type='button'
                 key={countryName}
-                onClick={() => handleDeleteCountry(countryName)}
+                onClick={(event) => handleDeleteCountry(event, countryName)}
+                value={countryName}
               >
                 {countryName}
               </button>
             )
           })}
         </div>
-        {!countriesOptions.length && <p>Must input at least one country</p>}
-        <button type='submit' disabled={Object.keys(errors).length > 0}>
+        {!activityData.countryName.length && (
+          <p>Must input at least one country</p>
+        )}
+        <button
+          type='submit'
+          disabled={
+            Object.keys(errors).length > 0 || !activityData.countryName.length
+          }
+        >
           Create Activity
         </button>
       </form>

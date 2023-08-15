@@ -12,7 +12,7 @@ const FilterByContinent = () => {
         onChange={(event) => handleDispatches(dispatch, event)}
       >
         <option value='' disabled selected hidden>
-          Sort by Continent
+          Filter by Continent
         </option>
 
         <option value='Africa'>Africa</option>
