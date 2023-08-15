@@ -79,7 +79,9 @@ const Form = () => {
         className={style.form}
         onSubmit={(event) => handleSubmit(event, activityData)}
       >
-        <label htmlFor='name'>Name of Activity: </label>
+        <label htmlFor='name' className={style.label}>
+          Name of Activity:{' '}
+        </label>
         <input
           type='text'
           name='name'
@@ -87,7 +89,9 @@ const Form = () => {
           onChange={handleInputChange}
         />
         {errors.name && <p>{errors.name}</p>}
-        <label htmlFor='difficulty'>Difficulty: </label>
+        <label htmlFor='difficulty' className={style.label}>
+          Difficulty:{' '}
+        </label>
         <input
           type='number'
           name='difficulty'
@@ -95,7 +99,9 @@ const Form = () => {
           onChange={handleInputChange}
         />
         {errors.difficulty && <p>{errors.difficulty}</p>}
-        <label htmlFor='duration'>Duration: </label>
+        <label htmlFor='duration' className={style.label}>
+          Duration:{' '}
+        </label>
         <input
           type='number'
           name='duration'
@@ -103,7 +109,9 @@ const Form = () => {
           onChange={handleInputChange}
         />
         {errors.duration && <p>{errors.duration}</p>}
-        <label htmlFor='season'>Season: </label>
+        <label htmlFor='season' className={style.label}>
+          Season:{' '}
+        </label>
         <input
           type='text'
           name='season'
@@ -111,7 +119,9 @@ const Form = () => {
           onChange={handleInputChange}
         />
         {errors.season && <p>{errors.season}</p>}
-
+        <label htmlFor='country' className={style.label}>
+          Where can you do this activity?
+        </label>
         <select name='country' id='' onChange={handleInputChange}>
           {countries
             .sort((a, b) => a.name.localeCompare(b.name))
@@ -123,16 +133,18 @@ const Form = () => {
               )
             })}
         </select>
-        {countriesOptions?.map((countryName) => {
-          return (
-            <button
-              key={countryName}
-              onClick={() => handleDeleteCountry(countryName)}
-            >
-              {countryName}
-            </button>
-          )
-        })}
+        <div className={style.buttonContainer}>
+          {countriesOptions?.map((countryName) => {
+            return (
+              <button
+                key={countryName}
+                onClick={() => handleDeleteCountry(countryName)}
+              >
+                {countryName}
+              </button>
+            )
+          })}
+        </div>
         {!countriesOptions.length && <p>Must input at least one country</p>}
         <button type='submit' disabled={Object.keys(errors).length > 0}>
           Create Activity

@@ -56,3 +56,12 @@
 .form button[type='submit']:hover {
   background-color: #27ae60;
 }
+
+.buttonContainer {
+  display: flex;
+  gap: 3px;
+}
+
+.label {
+  align-self: flex-start;
+}

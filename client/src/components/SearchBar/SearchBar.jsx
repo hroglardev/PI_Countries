@@ -1,15 +1,18 @@
 import { getCountries, getCountryByName } from '../../redux/actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import style from './SearchBar.module.css'
 
 const SearchBar = () => {
+  const countries = useSelector((state) => state.allCountries)
   const [country, setCountry] = useState('')
   const dispatch = useDispatch()
 
   const handleChange = (event) => {
     setCountry(event.target.value)
-    dispatch(getCountries())
+    if (countries.length < 40) {
+      dispatch(getCountries())
+    }
   }
 
   const handleSearch = () => {
