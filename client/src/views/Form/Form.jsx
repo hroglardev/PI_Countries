@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import validate from '../../components/validation/validation'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCountries } from '../../redux/actions'
+import { useSelector } from 'react-redux'
+
 import axios from 'axios'
 import style from './Form.module.css'
 
 const Form = () => {
-  const dispatch = useDispatch()
   const countries = useSelector((state) => state.allCountries)
   const [errors, setErrors] = useState({})
   const [activityData, setActivityData] = useState({
@@ -16,10 +15,6 @@ const Form = () => {
     season: '',
     countryName: [],
   })
-
-  useEffect(() => {
-    dispatch(getCountries())
-  }, [])
 
   //INPUT HANDLER
   const handleInputChange = (event) => {
@@ -35,7 +30,7 @@ const Form = () => {
     }
   }
 
-  const handleDeleteCountry = (event, countryName) => {
+  const handleDeleteCountry = (_event, countryName) => {
     setActivityData({
       ...activityData,
       countryName: activityData.countryName.filter(

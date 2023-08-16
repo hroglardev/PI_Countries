@@ -14,13 +14,11 @@ const Detail = () => {
         setCountry(data)
         setError(null)
       } catch (error) {
-        console.log(error)
         setCountry({})
         setError(error.response.data.error)
       }
     }
     fetchCountry()
-    console.log(country)
   }, [id])
   return (
     <div className={style.detailWrapper}>
@@ -28,22 +26,33 @@ const Detail = () => {
       {!error && (
         <div>
           <img src={country.flag} alt={country.name} />
-          <h2 className={style.detailData}>
-            Country: {`${country.name} (${country.id})`}
-          </h2>
+          <div className={style.countryInfo}>
+            <h2 className={style.detailData}>
+              Country: {`${country.name} (${country.id})`}
+            </h2>
 
-          <h3 className={style.detailData}>Continent: {country.continent}</h3>
-          <h3 className={style.detailData}>Capital: {country.capital}</h3>
-          {country.subregion && (
-            <h3 className={style.detailData}>Subregion: {country.subregion}</h3>
-          )}
-          {country.area && (
-            <h3 className={style.detailData}>Area: {`${country.area} m2`}</h3>
-          )}
-          <h3 className={style.detailData}>Population: {country.population}</h3>
+            <h3 className={style.detailData}>Continent: {country.continent}</h3>
+            <h3 className={style.detailData}>Capital: {country.capital}</h3>
+            {country.subregion && (
+              <h3 className={style.detailData}>
+                Subregion: {country.subregion}
+              </h3>
+            )}
+            {country.area && (
+              <h3 className={style.detailData}>Area: {`${country.area} m2`}</h3>
+            )}
+            <h3 className={style.detailData}>
+              Population: {country.population}
+            </h3>
+            <h3 className={style.detailData}>
+              Activities:
+              {country.Activities && country.Activities.length === 0 && (
+                <p>This country does not have any activities assigned to it</p>
+              )}
+            </h3>
+          </div>
           {country.Activities && country.Activities.length > 0 && (
             <ul className={style.activitiesList}>
-              <h3 className={style.detailData}>Activities: </h3>
               {country.Activities.map((activity) => {
                 return (
                   <li className={style.activityItem} key={activity.id}>
